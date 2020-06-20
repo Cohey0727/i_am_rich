@@ -28,46 +28,53 @@ class MyApp extends StatelessWidget {
                     fontWeight: FontWeight.bold)),
             Text('Flutter Developer',
                 style: TextStyle(fontSize: 20, color: Colors.teal[100])),
+            SizedBox(height: 10,),
             FractionallySizedBox(
                 widthFactor: 0.8,
                 child: Container(
-              padding: EdgeInsets.fromLTRB(12, 8, 12, 8),
-              margin:  EdgeInsets.fromLTRB(12, 16, 12, 4),
-              color: Colors.white,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Icon(
-                    Icons.phone_android,
-                    color: Colors.blueAccent,
+                  margin: EdgeInsets.fromLTRB(12, 4, 12, 0),
+                  child: Card(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(12, 4, 12, 4),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.phone_android,
+                            color: Colors.blueAccent,
+                          ),
+                          Text(
+                            '090-1234-5678',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  Text(
-                    '090-1234-5678',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ],
-              ),
-            )),
+                )),
             FractionallySizedBox(
                 widthFactor: 0.8,
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(12, 8, 12, 8),
-                  margin:  EdgeInsets.fromLTRB(12, 8, 12, 4),
-                  color: Colors.white,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.mail,
-                        color: Colors.blueAccent,
+                  margin: EdgeInsets.fromLTRB(12, 4, 12, 4),
+                  child: Card(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(12, 4, 12, 4),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.mail,
+                            color: Colors.blueAccent,
+                          ),
+                          Text(
+                            'test@exapmle.com',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ],
                       ),
-                      Text(
-                        'example@test.com',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
+                    ),
                   ),
-                ))
+                )),
           ],
         ),
       ),
