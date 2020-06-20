@@ -1,83 +1,61 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  return runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.red,
+        appBar: AppBar(
+          title: Text('Dicee'),
+          backgroundColor: Colors.red,
+        ),
+        body: DicePage(),
+      ),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  @override
+  _DicePageState createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  int leftDiceNumber = 1;
+  int rightDiceNumber = 1;
+
+  void changeDiceFace() {
+    leftDiceNumber = Random().nextInt(6) + 1;
+    rightDiceNumber = Random().nextInt(6) + 1;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-      backgroundColor: Colors.blueAccent,
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(width: double.infinity),
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('images/face.jpg'),
+    return Center(
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: FlatButton(
+              child: Image.asset(
+                'images/dice$leftDiceNumber.png',
+              ),
+              onPressed: changeDiceFace,
             ),
-            Text('Kohei Okamoto',
-                style: TextStyle(
-                    fontFamily: 'Pacifico',
-                    fontSize: 28.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold)),
-            Text('Flutter Developer',
-                style: TextStyle(fontSize: 20, color: Colors.teal[100])),
-            SizedBox(height: 10,),
-            FractionallySizedBox(
-                widthFactor: 0.8,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(12, 4, 12, 0),
-                  child: Card(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(12, 4, 12, 4),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            Icons.phone_android,
-                            color: Colors.blueAccent,
-                          ),
-                          Text(
-                            '090-1234-5678',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                )),
-            FractionallySizedBox(
-                widthFactor: 0.8,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(12, 4, 12, 4),
-                  child: Card(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(12, 4, 12, 4),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            Icons.mail,
-                            color: Colors.blueAccent,
-                          ),
-                          Text(
-                            'test@exapmle.com',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                )),
-          ],
-        ),
+          ),
+          //Get students to create the second die as a challenge
+          Expanded(
+            child: FlatButton(
+              child: Image.asset(
+                'images/dice$rightDiceNumber.png',
+              ),
+              onPressed: changeDiceFace,
+            ),
+          ),
+        ],
       ),
-    ));
+    );
   }
 }
